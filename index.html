@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rifat | Digital Profile</title>
+    <title>রিফাত | ডিজিটাল প্রোফাইল</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #0a0e17;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --accent-color: #00f2ea; /* Cyan */
-            --secondary-accent: #ff0050; /* TikTok Pink */
+            --bg-color: #080c14;
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --accent-color: #00f2ea;
+            --secondary-accent: #ff0050;
             --text-color-primary: #ffffff;
-            --text-color-secondary: #a0aab5;
-            --glow-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--accent-color), 0 0 45px var(--accent-color);
-            --font-main: 'Poppins', 'Noto Sans Bengali', sans-serif;
+            --text-color-secondary: #b0bec5;
+            --font-main: 'Noto Sans Bengali', sans-serif;
         }
 
         * {
@@ -39,69 +38,49 @@
             padding: 20px;
         }
 
-        /* Background Lighting Effects */
+        /* ব্যাকগ্রাউন্ড লাইটিং ইফেক্ট */
         body::before {
             content: '';
             position: absolute;
-            width: 300px;
-            height: 300px;
+            width: 350px;
+            height: 350px;
             background: var(--accent-color);
-            filter: blur(150px);
-            opacity: 0.15;
-            top: 10%;
-            left: 5%;
+            filter: blur(160px);
+            opacity: 0.12;
+            top: 5%;
+            left: 10%;
             z-index: -1;
-            animation: float 10s infinite ease-in-out alternate;
         }
         body::after {
             content: '';
             position: absolute;
-            width: 300px;
-            height: 300px;
+            width: 350px;
+            height: 350px;
             background: var(--secondary-accent);
-            filter: blur(150px);
+            filter: blur(160px);
             opacity: 0.1;
-            bottom: 10%;
-            right: 5%;
+            bottom: 5%;
+            right: 10%;
             z-index: -1;
-            animation: float 12s infinite ease-in-out alternate-reverse;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0) scale(1); }
-            100% { transform: translateY(50px) scale(1.1); }
         }
 
         .profile-container {
             width: 100%;
-            max-width: 500px;
+            max-width: 600px;
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 40px;
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 30px 20px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            position: relative;
-        }
-
-        .profile-container::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 30px;
-            padding: 2px; /* thickness of the border gradient */
-            background: linear-gradient(45deg, var(--accent-color), transparent, var(--secondary-accent));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-                    mask-composite: exclude;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
         }
 
         .profile-pic-wrapper {
             position: relative;
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 30px;
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 20px;
         }
 
         .profile-pic-wrapper img {
@@ -109,35 +88,29 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--bg-color);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-            transition: transform 0.3s ease;
-        }
-        
-        .profile-pic-wrapper:hover img {
-            transform: scale(1.05);
+            border: 3px solid var(--bg-color);
+            box-shadow: 0 0 20px rgba(0, 242, 234, 0.4);
         }
 
-        /* Glowing Ring around Profile Pic */
         .profile-pic-wrapper::after {
             content: '';
             position: absolute;
-            top: -6px;
-            left: -6px;
-            right: -6px;
-            bottom: -6px;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
             background: linear-gradient(45deg, var(--accent-color), var(--secondary-accent));
             border-radius: 50%;
             z-index: -1;
-            filter: blur(10px);
-            opacity: 0.7;
+            filter: blur(8px);
+            opacity: 0.8;
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 2.2rem;
             font-weight: 700;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #ffffff, var(--accent-color), #ffffff);
+            margin-bottom: 8px;
+            background: linear-gradient(90deg, #ffffff, var(--accent-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -145,165 +118,125 @@
         .status {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: rgba(0, 242, 234, 0.1);
+            gap: 8px;
+            background: rgba(0, 242, 234, 0.08);
             color: var(--accent-color);
-            padding: 5px 15px;
+            padding: 4px 12px;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
-            margin-bottom: 25px;
-            border: 1px solid rgba(0, 242, 234, 0.3);
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 242, 234, 0.2);
         }
 
         .status-dot {
-            height: 10px;
-            width: 10px;
+            height: 8px;
+            width: 8px;
             background-color: var(--accent-color);
             border-radius: 50%;
-            display: inline-block;
-            box-shadow: 0 0 10px var(--accent-color);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(0, 242, 234, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(0, 242, 234, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 242, 234, 0); }
+            box-shadow: 0 0 8px var(--accent-color);
         }
 
         .bio {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--text-color-secondary);
-            margin-bottom: 40px;
-            line-height: 1.6;
-            font-weight: 300;
-            max-width: 90%;
-            margin-left: auto;
-            margin-right: auto;
+            margin-bottom: 30px;
+            line-height: 1.5;
+            padding: 0 10px;
         }
 
-        .links-section {
+        /* দুটি করে পাশাপাশি অপশন সাজানোর জন্য গ্রিড লেআউট */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .link-card {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-        }
-
-        .link-btn {
-            display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-            width: 100%;
-            padding: 18px;
-            border-radius: 15px;
+            gap: 10px;
+            padding: 20px 15px;
+            border-radius: 18px;
             background: rgba(255, 255, 255, 0.03);
             color: var(--text-color-primary);
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.07);
         }
 
-        .link-btn:hover {
-            transform: translateY(-3px);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        .link-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.07);
+            border-color: var(--accent-color);
+            box-shadow: 0 5px 20px rgba(0, 242, 234, 0.2);
         }
 
-        /* Button specific styles */
-        .link-tiktok {
-             border-color: rgba(255, 0, 80, 0.3);
-        }
-        .link-tiktok:hover {
-            box-shadow: 0 0 15px rgba(255, 0, 80, 0.5);
-            border-color: var(--secondary-accent);
+        .link-card i {
+            font-size: 1.8rem;
         }
 
-        .link-btn i {
-            font-size: 1.4rem;
-        }
-        
-        .link-btn i.fa-tiktok {
-             color: var(--secondary-accent);
-        }
-         .link-btn i.fa-facebook {
-             color: #3b5998; /* Facebook Blue */
-        }
-         .link-btn i.fa-whatsapp {
-             color: #25d366; /* WhatsApp Green */
-        }
+        /* নির্দিষ্ট আইকনের রঙ */
+        .fa-tiktok { color: #ff0050; }
+        .fa-facebook { color: #1877f2; }
+        .fa-whatsapp { color: #25d366; }
+        .fa-phone-alt { color: var(--accent-color); }
 
-        /* Responsive adjustments */
-        @media (max-width: 600px) {
-            h1 { font-size: 2.5rem; }
-            .profile-container { padding: 30px; }
-             .profile-pic-wrapper { width: 120px; height: 120px; margin-bottom: 20px; }
-            .link-btn { padding: 15px; font-size: 1rem; }
+        /* মোবাইল স্ক্রিনের জন্য রেসপনসিভ */
+        @media (max-width: 480px) {
+            .links-grid {
+                grid-template-columns: 1fr; /* মোবাইল স্ক্রিন ছোট হলে ১ কলামেও হতে পারে, চাইলে 1fr রাখতে পারেন অথবা 2fr রাখলে পাশাপাশি থাকবে */
+            }
         }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg-color);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent-color);
-        }
-
     </style>
 </head>
 <body>
 
     <div class="profile-container">
-        <!-- Your Profile Picture -->
+        <!-- প্রোফাইল পিকচার -->
         <div class="profile-pic-wrapper">
-            <!-- Replace 'your-image-url.jpg' with your actual direct image URL if hosted online, OR leave it as is and upload the image file to your GitHub repo -->
-            <img src="your-image-url.jpg" alt="Rifat">
+            <img src="rifat-pic.jpg" alt="রিফাত">
         </div>
 
-        <h1>Rifat</h1>
+        <h1>রিফাত হোসেন</h1>
         
         <div class="status">
             <span class="status-dot"></span>
-            <span>Available Now</span>
+            <span>সক্রিয় আছেন</span>
         </div>
 
         <p class="bio">
-            Welcome to my digital world! I am Rifat. I love exploring new things, connecting with people, and sharing my journey. You can find me on social media or reach out for collaborations.
+            আসসালামু আলাইকুম! আমি রিফাত হোসেন। প্রযুক্তির সাথে পথচলা এবং নতুন কিছু শেখার প্রবল আগ্রহ রয়েছে। আমার সাথে যোগাযোগের মাধ্যমগুলো নিচে দেওয়া হলো।
         </p>
 
-        <div class="links-section">
-            <!-- TikTok Link -->
-            <a href="https://tiktok.com/@rifatr887" class="link-btn link-tiktok" target="_blank">
+        <!-- দুইটা দুইটা করে সাজানো অপশন বা বাটনগুলো -->
+        <div class="links-grid">
+            <!-- টিকটক -->
+            <a href="https://tiktok.com/@rifatr887" class="link-card" target="_blank">
                 <i class="fab fa-tiktok"></i>
-                TikTok @rifatr887
+                <span>টিকটক</span>
             </a>
 
-            <!-- Facebook Link -->
-            <a href="https://www.facebook.com/profile.php?id=your_facebook_id_number_or_username" class="link-btn link-fb" target="_blank">
+            <!-- ফেসবুক -->
+            <a href="https://www.facebook.com" class="link-card" target="_blank">
                 <i class="fab fa-facebook"></i>
-                Facebook: Rifat Hossen
+                <span>ফেসবুক</span>
             </a>
             
-            <!-- Phone / WhatsApp / Imo Link -->
-            <!-- Note: For WhatsApp, use wa.me/countrycodephonenumber. For direct call, use tel:phonenumber -->
-            <a href="https://wa.me/8801953729545" class="link-btn link-whatsapp" target="_blank">
-                 <i class="fab fa-whatsapp"></i>
-                 Contact: +8801953729545 (WhatsApp/Imo)
+            <!-- হোয়াটসঅ্যাপ -->
+            <a href="https://wa.me/8801953729545" class="link-card">
+                <i class="fab fa-whatsapp"></i>
+                <span>হোয়াটসঅ্যাপ</span>
             </a>
-             <a href="tel:01782151880" class="link-btn link-call">
-                <i class="fas fa-phone"></i>
-                 Call: 01782151880
+
+            <!-- সরাসরি কল -->
+            <a href="tel:01953729545" class="link-card">
+                <i class="fas fa-phone-alt"></i>
+                <span>কল করুন</span>
             </a>
         </div>
     </div>
