@@ -3,243 +3,556 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>রিফাত | ডিজিটাল প্রোফাইল</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <title>রিফাত হোসেন</title>
+
     <style>
-        :root {
-            --bg-color: #080c14;
-            --card-bg: rgba(255, 255, 255, 0.04);
-            --accent-color: #00f2ea;
-            --secondary-accent: #ff0050;
-            --text-color-primary: #ffffff;
-            --text-color-secondary: #b0bec5;
-            --font-main: 'Noto Sans Bengali', sans-serif;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap');
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: var(--font-main);
+        }
+
+        :root {
+            --bg: #050711;
+            --card: rgba(13, 18, 35, 0.68);
+            --border: rgba(255,255,255,0.10);
+            --text: #ffffff;
+            --muted: #aeb6c9;
+            --cyan: #00eaff;
+            --blue: #3578ff;
+            --green: #00ff88;
+            --pink: #ff28c8;
+            --purple: #8b5cff;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color-primary);
-            display: flex;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
+            font-family: "Noto Sans Bengali", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 15% 15%, rgba(0,234,255,0.15), transparent 30%),
+                radial-gradient(circle at 85% 20%, rgba(255,40,200,0.13), transparent 28%),
+                radial-gradient(circle at 50% 100%, rgba(55,80,255,0.15), transparent 35%),
+                var(--bg);
             overflow-x: hidden;
             position: relative;
-            padding: 20px;
         }
 
-        /* ব্যাকগ্রাউন্ড লাইটিং ইফেক্ট */
-        body::before {
-            content: '';
-            position: absolute;
-            width: 350px;
-            height: 350px;
-            background: var(--accent-color);
-            filter: blur(160px);
-            opacity: 0.12;
-            top: 5%;
-            left: 10%;
-            z-index: -1;
-        }
+        /* ব্যাকগ্রাউন্ড লাইট */
+        body::before,
         body::after {
-            content: '';
-            position: absolute;
-            width: 350px;
-            height: 350px;
-            background: var(--secondary-accent);
-            filter: blur(160px);
-            opacity: 0.1;
-            bottom: 5%;
-            right: 10%;
+            content: "";
+            position: fixed;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.35;
+            pointer-events: none;
             z-index: -1;
+            animation: floatLight 8s ease-in-out infinite alternate;
         }
 
-        .profile-container {
-            width: 100%;
-            max-width: 600px;
-            background: var(--card-bg);
-            backdrop-filter: blur(15px);
-            border-radius: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 30px 20px;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        body::before {
+            background: var(--cyan);
+            top: -100px;
+            left: -100px;
         }
 
-        .profile-pic-wrapper {
+        body::after {
+            background: var(--pink);
+            right: -100px;
+            bottom: -100px;
+            animation-delay: 2s;
+        }
+
+        @keyframes floatLight {
+            from {
+                transform: translate(0, 0) scale(1);
+            }
+            to {
+                transform: translate(40px, 30px) scale(1.25);
+            }
+        }
+
+        /* ছোট ছোট আলো */
+        .particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--cyan);
+            opacity: 0.7;
+            animation: moveParticle 7s linear infinite;
+        }
+
+        .particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 80%; top: 15%; animation-delay: 1s; }
+        .particle:nth-child(3) { left: 25%; top: 70%; animation-delay: 2s; }
+        .particle:nth-child(4) { left: 70%; top: 65%; animation-delay: 3s; }
+        .particle:nth-child(5) { left: 45%; top: 35%; animation-delay: 4s; }
+        .particle:nth-child(6) { left: 90%; top: 80%; animation-delay: 5s; }
+        .particle:nth-child(7) { left: 15%; top: 90%; animation-delay: 2.5s; }
+
+        @keyframes moveParticle {
+            0% {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.8;
+            }
+            80% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-120px);
+                opacity: 0;
+            }
+        }
+
+        /* মূল কন্টেইনার */
+        .container {
+            width: min(100% - 28px, 470px);
+            margin: auto;
+            padding: 28px 0 30px;
+        }
+
+        /* প্রোফাইল কার্ড */
+        .profile-card {
             position: relative;
-            width: 130px;
-            height: 130px;
-            margin: 0 auto 20px;
+            padding: 30px 20px 22px;
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,0.08),
+                rgba(255,255,255,0.025)
+            );
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            box-shadow:
+                0 20px 70px rgba(0,0,0,0.45),
+                inset 0 1px rgba(255,255,255,0.08);
+            overflow: hidden;
         }
 
-        .profile-pic-wrapper img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--bg-color);
-            box-shadow: 0 0 20px rgba(0, 242, 234, 0.4);
-        }
-
-        .profile-pic-wrapper::after {
-            content: '';
+        .profile-card::before {
+            content: "";
             position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            background: linear-gradient(45deg, var(--accent-color), var(--secondary-accent));
+            width: 180px;
+            height: 180px;
+            background: var(--cyan);
+            filter: blur(100px);
+            opacity: 0.10;
+            top: -100px;
+            left: -70px;
+        }
+
+        /* প্রোফাইল আলো */
+        .avatar {
+            width: 105px;
+            height: 105px;
+            margin: 0 auto 17px;
             border-radius: 50%;
-            z-index: -1;
-            filter: blur(8px);
-            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            font-weight: 800;
+            color: white;
+            background:
+                linear-gradient(145deg, #071a2d, #10152c);
+            border: 2px solid rgba(0,234,255,0.65);
+            box-shadow:
+                0 0 15px rgba(0,234,255,0.35),
+                0 0 45px rgba(0,234,255,0.18),
+                inset 0 0 25px rgba(0,234,255,0.08);
+            position: relative;
         }
 
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            background: linear-gradient(90deg, #ffffff, var(--accent-color));
+        .avatar::after {
+            content: "";
+            position: absolute;
+            inset: -7px;
+            border-radius: 50%;
+            border: 1px solid rgba(0,234,255,0.20);
+            animation: pulse 2.2s infinite;
+        }
+
+        @keyframes pulse {
+            0%,100% {
+                transform: scale(1);
+                opacity: .7;
+            }
+            50% {
+                transform: scale(1.08);
+                opacity: .2;
+            }
+        }
+
+        .name {
+            text-align: center;
+            font-size: clamp(30px, 8vw, 42px);
+            font-weight: 800;
+            line-height: 1.25;
+            letter-spacing: -1px;
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #7defff,
+                #ffffff,
+                #d889ff
+            );
+            background-size: 250% auto;
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            animation: textGlow 5s linear infinite;
+            filter: drop-shadow(0 0 12px rgba(0,234,255,0.18));
         }
 
+        @keyframes textGlow {
+            to {
+                background-position: 250% center;
+            }
+        }
+
+        /* সক্রিয় অবস্থা */
         .status {
-            display: inline-flex;
+            width: fit-content;
+            margin: 10px auto 0;
+            padding: 6px 13px;
+            border-radius: 30px;
+            display: flex;
             align-items: center;
             gap: 8px;
-            background: rgba(0, 242, 234, 0.08);
-            color: var(--accent-color);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 20px;
-            border: 1px solid rgba(0, 242, 234, 0.2);
+            color: #aaffd2;
+            font-size: 13px;
+            font-weight: 600;
+            background: rgba(0,255,136,0.07);
+            border: 1px solid rgba(0,255,136,0.17);
+            box-shadow: 0 0 20px rgba(0,255,136,0.07);
         }
 
         .status-dot {
-            height: 8px;
             width: 8px;
-            background-color: var(--accent-color);
+            height: 8px;
             border-radius: 50%;
-            box-shadow: 0 0 8px var(--accent-color);
+            background: var(--green);
+            box-shadow:
+                0 0 6px var(--green),
+                0 0 14px var(--green);
+            animation: statusPulse 1.5s infinite;
         }
 
+        @keyframes statusPulse {
+            0%,100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.35);
+                opacity: .6;
+            }
+        }
+
+        /* পরিচিতি */
         .bio {
-            font-size: 0.95rem;
-            color: var(--text-color-secondary);
-            margin-bottom: 30px;
-            line-height: 1.5;
-            padding: 0 10px;
+            margin: 22px auto 22px;
+            max-width: 390px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.9;
         }
 
-        /* দুটি করে পাশাপাশি অপশন সাজানোর জন্য গ্রিড লেআউট */
-        .links-grid {
+        /* বিভাজক */
+        .divider {
+            height: 1px;
+            width: 80%;
+            margin: 0 auto 20px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(0,234,255,.4),
+                rgba(255,40,200,.4),
+                transparent
+            );
+        }
+
+        /* বাটন গ্রিড */
+        .links {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            gap: 12px;
         }
 
-        .link-card {
+        .link {
+            min-height: 76px;
+            padding: 13px 10px;
+            text-decoration: none;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.09);
+            border-radius: 19px;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.075),
+                    rgba(255,255,255,0.025)
+                );
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 20px 15px;
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.03);
-            color: var(--text-color-primary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.07);
+            align-items: center;
+            gap: 5px;
+            transition:
+                transform .25s ease,
+                border-color .25s ease,
+                box-shadow .25s ease,
+                background .25s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .link-card:hover {
-            transform: translateY(-4px);
-            background: rgba(255, 255, 255, 0.07);
-            border-color: var(--accent-color);
-            box-shadow: 0 5px 20px rgba(0, 242, 234, 0.2);
+        .link::before {
+            content: "";
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: var(--cyan);
+            filter: blur(45px);
+            opacity: 0;
+            transition: opacity .3s ease;
         }
 
-        .link-card i {
-            font-size: 1.8rem;
+        .link:hover::before,
+        .link:active::before {
+            opacity: .13;
         }
 
-        /* নির্দিষ্ট আইকনের রঙ */
-        .fa-tiktok { color: #ff0050; }
-        .fa-facebook { color: #1877f2; }
-        .fa-whatsapp { color: #25d366; }
-        .fa-phone-alt { color: var(--accent-color); }
+        .link:hover {
+            transform: translateY(-3px);
+            border-color: rgba(0,234,255,.35);
+            box-shadow:
+                0 8px 30px rgba(0,0,0,.3),
+                0 0 20px rgba(0,234,255,.08);
+        }
 
-        /* মোবাইল স্ক্রিনের জন্য রেসপনসিভ */
-        @media (max-width: 480px) {
-            .links-grid {
-                grid-template-columns: 1fr; /* মোবাইল স্ক্রিন ছোট হলে ১ কলামেও হতে পারে, চাইলে 1fr রাখতে পারেন অথবা 2fr রাখলে পাশাপাশি থাকবে */
+        .link:active {
+            transform: scale(.96);
+        }
+
+        .link-icon {
+            font-size: 23px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .link-name {
+            font-size: 14px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .link-info {
+            font-size: 10px;
+            color: #8993aa;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* আলাদা রঙের আলো */
+        .tiktok:hover {
+            border-color: rgba(255,255,255,.35);
+            box-shadow: 0 0 25px rgba(255,0,100,.12);
+        }
+
+        .facebook:hover {
+            border-color: rgba(70,130,255,.4);
+            box-shadow: 0 0 25px rgba(50,100,255,.15);
+        }
+
+        .whatsapp:hover {
+            border-color: rgba(0,255,136,.4);
+            box-shadow: 0 0 25px rgba(0,255,136,.13);
+        }
+
+        .call:hover {
+            border-color: rgba(0,234,255,.4);
+            box-shadow: 0 0 25px rgba(0,234,255,.13);
+        }
+
+        /* নিচের অংশ */
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #626b7f;
+            font-size: 11px;
+        }
+
+        .footer-line {
+            width: 45px;
+            height: 2px;
+            margin: 0 auto 9px;
+            border-radius: 5px;
+            background: linear-gradient(
+                90deg,
+                var(--cyan),
+                var(--pink)
+            );
+            box-shadow: 0 0 10px rgba(0,234,255,.5);
+        }
+
+        /* ছোট স্ক্রিন */
+        @media (max-width: 350px) {
+            .container {
+                width: min(100% - 18px, 470px);
+                padding-top: 18px;
+            }
+
+            .profile-card {
+                padding: 25px 14px 18px;
+                border-radius: 23px;
+            }
+
+            .avatar {
+                width: 90px;
+                height: 90px;
+                font-size: 34px;
+            }
+
+            .name {
+                font-size: 29px;
+            }
+
+            .link {
+                min-height: 70px;
+            }
+        }
+
+        /* বড় স্ক্রিন */
+        @media (min-width: 700px) {
+            .container {
+                padding-top: 45px;
             }
         }
     </style>
 </head>
+
 <body>
 
-    <div class="profile-container">
-        <!-- প্রোফাইল পিকচার -->
-        <div class="profile-pic-wrapper">
-            <img src="rifat-pic.jpg" alt="রিফাত">
-        </div>
-
-        <h1>রিফাত হোসেন</h1>
-        
-        <div class="status">
-            <span class="status-dot"></span>
-            <span>সক্রিয় আছেন</span>
-        </div>
-
-        <p class="bio">
-            আসসালামু আলাইকুম! আমি রিফাত হোসেন। প্রযুক্তির সাথে পথচলা এবং নতুন কিছু শেখার প্রবল আগ্রহ রয়েছে। আমার সাথে যোগাযোগের মাধ্যমগুলো নিচে দেওয়া হলো।
-        </p>
-
-        <!-- দুইটা দুইটা করে সাজানো অপশন বা বাটনগুলো -->
-        <div class="links-grid">
-            <!-- টিকটক -->
-            <a href="https://tiktok.com/@rifatr887" class="link-card" target="_blank">
-                <i class="fab fa-tiktok"></i>
-                <span>টিকটক</span>
-            </a>
-
-            <!-- ফেসবুক -->
-            <a href="https://www.facebook.com" class="link-card" target="_blank">
-                <i class="fab fa-facebook"></i>
-                <span>ফেসবুক</span>
-            </a>
-            
-            <!-- হোয়াটসঅ্যাপ -->
-            <a href="https://wa.me/8801953729545" class="link-card">
-                <i class="fab fa-whatsapp"></i>
-                <span>হোয়াটসঅ্যাপ</span>
-            </a>
-
-            <!-- সরাসরি কল -->
-            <a href="tel:01953729545" class="link-card">
-                <i class="fas fa-phone-alt"></i>
-                <span>কল করুন</span>
-            </a>
-        </div>
+    <!-- ব্যাকগ্রাউন্ডের ছোট আলো -->
+    <div class="particles">
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
     </div>
+
+    <main class="container">
+
+        <section class="profile-card">
+
+            <!-- প্রোফাইল -->
+            <div class="avatar">র</div>
+
+            <h1 class="name">রিফাত হোসেন</h1>
+
+            <div class="status">
+                <span class="status-dot"></span>
+                <span>সক্রিয় আছেন</span>
+            </div>
+
+            <p class="bio">
+                প্রযুক্তির সাথে পথচলা এবং নতুন কিছু শেখার প্রবল আগ্রহই
+                আমার প্রতিদিনের অনুপ্রেরণা। নতুন ধারণা, নতুন অভিজ্ঞতা
+                এবং সৃজনশীলতার মাধ্যমে নিজেকে প্রতিনিয়ত এগিয়ে নিতে চাই।
+            </p>
+
+            <div class="divider"></div>
+
+            <!-- যোগাযোগের বাটন -->
+            <div class="links">
+
+                <!-- টিকটক -->
+                <a
+                    class="link tiktok"
+                    href="https://tiktok.com/@rifatr887"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <span class="link-icon">♪</span>
+                    <span class="link-name">টিকটক</span>
+                    <span class="link-info">আমার প্রোফাইল</span>
+                </a>
+
+                <!-- ফেসবুক -->
+                <a
+                    class="link facebook"
+                    href="#"
+                    onclick="return false;"
+                >
+                    <span class="link-icon">f</span>
+                    <span class="link-name">ফেসবুক</span>
+                    <span class="link-info">রিফাত হোসেন</span>
+                </a>
+
+                <!-- হোয়াটসঅ্যাপ -->
+                <a
+                    class="link whatsapp"
+                    href="https://wa.me/8801953729545"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <span class="link-icon">◉</span>
+                    <span class="link-name">হোয়াটসঅ্যাপ</span>
+                    <span class="link-info">সরাসরি বার্তা</span>
+                </a>
+
+                <!-- কল -->
+                <a
+                    class="link call"
+                    href="tel:01953729545"
+                >
+                    <span class="link-icon">☎</span>
+                    <span class="link-name">কল করুন</span>
+                    <span class="link-info">০১৯৫৩৭২৯৫৪৫</span>
+                </a>
+
+            </div>
+
+            <footer class="footer">
+                <div class="footer-line"></div>
+                ব্যক্তিগত পরিচিতি পৃষ্ঠা
+            </footer>
+
+        </section>
+
+    </main>
 
 </body>
 </html>
